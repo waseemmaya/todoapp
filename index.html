@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .editbutton {
+            text-align: right;
+            left: auto;
+            margin-left: 400px;
+        }
+
+        .trashbutton {
+            margin-left: 10px;
+        }
+
+        #textbox {
+            width: 400px;
+            height: 30px;
+            font-size: 15px;
+            font-weight: bold;
+            color: rgb(105, 103, 103);
+        }
+
+
+        #textbox:hover {
+            border: 1.5px solid rgb(17, 172, 17);
+        }
+
+        #submit {
+            font-size: 15px;
+            padding: 9px 20px 9px 20px;
+            font-stretch: ultra-expanded;
+            font-weight: bold;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            background-color: rgb(19, 160, 19);
+            border-radius: 3px;
+        }
+
+
+        #submit:hover {
+            background-color: rgb(9, 138, 9);
+        }
+
+        #job:hover {
+            background-color: rgb(9, 138, 9);
+        }
+
+        .lists {
+            margin-top: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            list-style: lower-alpha;
+            font-size: 25px;
+            text-transform: capitalize;
+        }
+
+        #delBut {
+            /* //pointer */
+            margin-left: 50%;
+            font-size: 15px;
+            padding: 7px 20px 7px 20px;
+            font-stretch: ultra-expanded;
+            font-weight: bold;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            background-color: rgb(19, 160, 19);
+            border-radius: 3px;
+            right: 100%;
+            text-align: right;
+
+        }
+
+        #delBut:hover {
+            background-color: rgb(9, 138, 9);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>TO-DO App</h1>
+
+    <input type="text" id="textbox" placeholder="Enter Your Tasks...">
+
+    <a href="#" id="submit" onclick="onAdd();">Add Task</a>
+    <a href="#" id="submit" onclick="delAll();">Delete All</a>
+
+    <ul id="ul">
+
+    </ul>
+
+</body>
+
+<script>
+
+    function delAll() {
+        if (confirm("Are You Sure?")) {
+            document.getElementById("ul").innerHTML = "";
+        } else {
+            //nothing
+        }
+    }
+
+
+    function onAdd() {
+
+        if (document.getElementById('textbox').value == "") {
+            alert("Insert Something");
+        }
+        else {
+            // var but = document.createElement('a');
+            // but.setAttribute("href", "#");
+            // but.setAttribute("id", "delBut");
+            // but.setAttribute("align", "right");
+            // but.setAttribute("onclick", "del1();");
+            // but.innerHTML = "Delete";
+
+            var li = document.createElement('li');
+            li.setAttribute("class", "lists")
+            var fetchData = document.getElementById('textbox').value;
+
+            var text = document.createTextNode(fetchData);
+            li.appendChild(text);
+
+            var edit1 = document.createElement("button");
+            edit1.className = "editbutton";
+            edit1.className += " glyphicon glyphicon-edit butt";
+            document.getElementById('ul').appendChild(li).appendChild(edit1);
+
+            var del1 = document.createElement("button");
+            del1.className = "trashbutton";
+            del1.className += " glyphicon glyphicon-trash butt";
+            document.getElementById('ul').appendChild(li).appendChild(del1);
+
+            document.getElementById('textbox').value = "";
+        }
+
+         edit1.onclick = function (){
+        var l= this.parentNode;
+        // l.setAttribute("class", "editbutton");
+        l.innerHTML= " ";
+        var t = prompt("Enter Edited Value ");
+        l.appendChild(del1); 
+        l.appendChild(edit1);
+        l.innerHTML = t;
+        l.appendChild(del1);   
+        l.appendChild(edit1);
+            
+        }
+
+
+        var text = document.createTextNode(fetchData.value);
+        li.appendChild(fetchData)
+        li.appendChild(del1)
+        li.appendChild(edit1)
+        list.appendChild(li)
+        fetchData.value = "";
+
+
+
+
+
+        del1.onclick = function () {
+            if (confirm("Are You Sure?")) {
+                var li = this.parentNode;
+                var ol = li.parentNode;
+                ol.removeChild(li);
+            } else {
+                //nothing
+            }
+        }
+    }
+</script>
+
+
+</html>
